@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>Figury</title>
-     <script type ="text/javascript" src="three.js"></script>
+    <script type="text/javascript" src="three.js"></script>
     <style>
         body {
             overflow: hidden;
             background-color: white;
         }
+        
         #panel {
             position: absolute;
             background-color: blue;
@@ -18,9 +20,6 @@
         }
     </style>
     <script>
-       
-        
-
         function load() {
 
             /*var tab = [new THREE.BoxGeometry(50, 50, 50, 5, 5, 5),
@@ -69,13 +68,31 @@
 
             var materials = [];
 
-            materials.push(new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: THREE.ImageUtils.loadTexture('tex/side.jpg') }));
-            materials.push(new THREE.MeshBasicMaterial({side: THREE.DoubleSide, map: THREE.ImageUtils.loadTexture('tex/side.jpg') }));
-            materials.push(new THREE.MeshBasicMaterial({ side: THREE.DoubleSide,map: THREE.ImageUtils.loadTexture('tex/up.jpg') }));
-            materials.push(new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: THREE.ImageUtils.loadTexture('tex/bottom.jpg') }));
-            materials.push(new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: THREE.ImageUtils.loadTexture('tex/side.jpg') }));
-            materials.push(new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map: THREE.ImageUtils.loadTexture('tex/side.jpg') }));
-            
+            materials.push(new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide,
+                map: THREE.ImageUtils.loadTexture('tex/side.jpg')
+            }));
+            materials.push(new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide,
+                map: THREE.ImageUtils.loadTexture('tex/side.jpg')
+            }));
+            materials.push(new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide,
+                map: THREE.ImageUtils.loadTexture('tex/up.jpg')
+            }));
+            materials.push(new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide,
+                map: THREE.ImageUtils.loadTexture('tex/bottom.jpg')
+            }));
+            materials.push(new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide,
+                map: THREE.ImageUtils.loadTexture('tex/side.jpg')
+            }));
+            materials.push(new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide,
+                map: THREE.ImageUtils.loadTexture('tex/side.jpg')
+            }));
+
             var faceMaterial = new THREE.MeshFaceMaterial(materials);
 
             console.log(f);
@@ -84,14 +101,14 @@
             var scene = new THREE.Scene();
 
             var camera = new THREE.PerspectiveCamera(
-                 90, // kąt patrzenia kamery (FOV - field of view)
-                 4 / 3, // proporcje widoku
-                 0.1, // min renderowana odległość
-                 10000 // max renderowana odległość
+                90, // kąt patrzenia kamery (FOV - field of view)
+                4 / 3, // proporcje widoku
+                0.1, // min renderowana odległość
+                10000 // max renderowana odległość
             );
 
             var renderer = new THREE.WebGLRenderer();
-			
+
 
             // kolor tła - uwaga na prefix 0x a nie #
 
@@ -102,24 +119,24 @@
             var y = 0;
             var z = 256
             var currentFocused = false;
-			var rayzmienna;
+            var rayzmienna;
             console.log(outerWidth, outerHeight);
 
             renderer.setSize(outerWidth, outerHeight);
 
             //geometria - obiekt nie wyświetlany na scenie, ale stanwiący strukturę która jest
             //dodawana do kolejnego obiektu
-			
-			//zarejestruj zdarzenie kliknięcia w dokument
+
+            //zarejestruj zdarzenie kliknięcia w dokument
 
             //var geometry = tab[pom]
             var geometry = new THREE.CubeGeometry(256, 256, 256, 1, 1, 1);
 
             //materiał typu kolor
 
-          /*  var material = new THREE.MeshBasicMaterial({
-                color: 0x008000, side: faceMaterial, wireframe: false
-            }); */
+            /*  var material = new THREE.MeshBasicMaterial({
+                  color: 0x008000, side: faceMaterial, wireframe: false
+              }); */
 
             //mesh - obiekt wyświetlany na scenie
 
@@ -129,25 +146,25 @@
 
             //scene.add(mesh);
 
-            
-            for(var i = 0; i < 3; i++){
-                for(var j = 0; j < 3; j++){
+
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
                     var mesh = new THREE.Mesh(geometry, faceMaterial);
                     //mesh.position.set(x + (75 * j),y,z + (75 * i));
                     mesh.position.set(-x + (256 * i), y, -z + (256 * j));
                     scene.add(mesh);
-                 }
+                }
             }
-            
+
 
             //dodanie renderera do diva
-			var r = 750;
+            var r = 750;
             var angle = 5;
             document.getElementById("container").appendChild(renderer.domElement);
 
-            camera.position.x = r * Math.sin(angle);// * Math.sin(pos);
+            camera.position.x = r * Math.sin(angle); // * Math.sin(pos);
             camera.position.y = 400;
-            camera.position.z = r * Math.cos(angle);// * Math.cos(pos);
+            camera.position.z = r * Math.cos(angle); // * Math.cos(pos);
 
             //nakierowanie kamery na punkt (0,0,0) w przestrzeni
 
@@ -161,63 +178,63 @@
             document.addEventListener("keydown", onKeyDown, false); // naciśnięcie dowolnego klawisza
             document.addEventListener("keyup", onKeyUp, false); //zwolnienie dowolnego klawisza
 
-            
+
             var goLeft = false
             var goBelow = false
             var goRight = false
             var goAbove = false
-			var moveForvard = false
-			var moveBack = false
-			var moveLeft = false
-			var moveRight = false
-			
-			document.addEventListener("mousedown", onMouseDown, false);
-			//document.getElementById("container").addEventListener("mousedown", onMouseDown, false)
-			//document.getElementById("idTegoGdzieMaszRenderowanyThreeJs").addEventListener(..)
+            var moveForvard = false
+            var moveBack = false
+            var moveLeft = false
+            var moveRight = false
 
-			//zdefiniuj dwa obiekty:
+            document.addEventListener("mousedown", onMouseDown, false);
+            //document.getElementById("container").addEventListener("mousedown", onMouseDown, false)
+            //document.getElementById("idTegoGdzieMaszRenderowanyThreeJs").addEventListener(..)
 
-			var raycaster = new THREE.Raycaster(); // obiekt symulujący "rzucanie" promieni
-			var mouseVector = new THREE.Vector2() // wektor (x,y) wykorzystany bedzie do określenie pozycji myszy na ekranie
-			
-			//obsługa funkcji onMouseDown
+            //zdefiniuj dwa obiekty:  d
 
-			function onMouseDown(event) {
-				
-				//pozycja myszy zostaje przeliczona na wartości 0-1, wymagane przez raycaster
+            var raycaster = new THREE.Raycaster(); // obiekt symulujący "rzucanie" promieni
+            var mouseVector = new THREE.Vector2() // wektor (x,y) wykorzystany bedzie do określenie pozycji myszy na ekranie
 
-				//mouseVector.x = (event.clientX / window.innerWidth) * 2 - 1;
-				//mouseVector.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            //obsługa funkcji onMouseDown
 
-				// szukamy punktów wspólnych "promienia" i obiektu 3D
+            function onMouseDown(event) {
 
-				raycaster.setFromCamera(mouseVector, camera);
-				
-				//intersects - tablica obiektów w które "trafia" nasz "promień" wysyłany z kamery
+                //pozycja myszy zostaje przeliczona na wartości 0-1, wymagane przez raycaster
 
-				var intersects = raycaster.intersectObjects(scene.children);
-			   
-			   // console.log(intersects.length)
+                //mouseVector.x = (event.clientX / window.innerWidth) * 2 - 1;
+                //mouseVector.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-				//jeśli długość tablicy > 0 oznacza to że "trafilismy" w obiekt 3D czyli "kliknelismy" go
-				var keyCodeRay = event.which; // kod klawisza
-				console.log("Raykey", keyCodeRay)
+                // szukamy punktów wspólnych "promienia" i obiektu 3D
 
-				if (intersects.length > 0) {
+                raycaster.setFromCamera(mouseVector, camera);
 
-					// zerowy czyli najbliższy kamery jest tek którego potrzebujemy
-					console.log(intersects[0].object);
-					rayzmienna = intersects[0].object
-					currentFocused = true;
-					//onsole.log(keyCodeRay)
-					
-					
-				  
-				}
+                //intersects - tablica obiektów w które "trafia" nasz "promień" wysyłany z kamery
+
+                var intersects = raycaster.intersectObjects(scene.children);
+
+                // console.log(intersects.length)
+
+                //jeśli długość tablicy > 0 oznacza to że "trafilismy" w obiekt 3D czyli "kliknelismy" go
+                var keyCodeRay = event.which; // kod klawisza
+                console.log("Raykey", keyCodeRay)
+
+                if (intersects.length > 0) {
+
+                    // zerowy czyli najbliższy kamery jest tek którego potrzebujemy
+                    console.log(intersects[0].object);
+                    rayzmienna = intersects[0].object
+                    currentFocused = true;
+                    //onsole.log(keyCodeRay)
 
 
-			}
-			
+
+                }
+
+
+            }
+
             function onKeyDown(event) {
 
                 var keyCode = event.which; // kod klawisza
@@ -228,62 +245,50 @@
 
                     case 65:
                         console.log("naciskasz A");
-                        if(currentFocused)
-							{
-								moveLeft = true;
-								rayzmienna.position.z -= 256;
-							}
-						else
-							{
-								console.log("worksA")								
-								goLeft = true;
-							}          
+                        if (currentFocused) {
+                            moveLeft = true;
+                            rayzmienna.position.z -= 256;
+                        } else {
+                            console.log("worksA")
+                            goLeft = true;
+                        }
                         break;
                     case 87:
-                        console.log("naciskasz W");                  
-                        if(currentFocused)
-							{
-								moveForvard = true;
-								rayzmienna.position.x += 256;
-							}
-						else
-							{
-								console.log("worksW")
-								goAbove = true;
-							}          
+                        console.log("naciskasz W");
+                        if (currentFocused) {
+                            moveForvard = true;
+                            rayzmienna.position.x += 256;
+                        } else {
+                            console.log("worksW")
+                            goAbove = true;
+                        }
                         break;
                     case 83:
                         console.log("naciskasz S");
-                        if(currentFocused)
-							{
-								moveBack = true;
-								rayzmienna.position.x -= 256;
-							}
-						else
-							{
-								console.log("worksS")
-								goBelow = true;
-							}          
+                        if (currentFocused) {
+                            moveBack = true;
+                            rayzmienna.position.x -= 256;
+                        } else {
+                            console.log("worksS")
+                            goBelow = true;
+                        }
                         break;
                     case 68:
                         console.log("naciskasz D");
-                        if(currentFocused)
-							{
-								moveRight = true;
-								rayzmienna.position.z += 256;
-							}
-						else
-							{
-								console.log("worksD")
-								goRight = true;
-							}   
-						break;
-					case 27:
-						console.log("naciskasz ESC");
-						currentFocused = false;
+                        if (currentFocused) {
+                            moveRight = true;
+                            rayzmienna.position.z += 256;
+                        } else {
+                            console.log("worksD")
+                            goRight = true;
+                        }
                         break;
-					
-					/*
+                    case 27:
+                        console.log("naciskasz ESC");
+                        currentFocused = false;
+                        break;
+
+                        /*
 						case 37:
 							//console.log("naciskasz <-");
 							if(currentFocused)
@@ -307,28 +312,28 @@
 							goRight = true;
                             break;
 							*/
-						
-						
+
+
                         //camera.position.x
                         //camera.position.y
                         //camera.position.z
 
-                } 
+                }
 
             }
 
             function onKeyUp(event) {
-                        goLeft = false
-                        goAbove = false;       
-                        goBelow = false;
-                        goRight = false
-						moveForvard = false
-						moveBack = false
-						moveLeft = false
-						moveRight = false
-                        //camera.position.x
-                        //camera.position.y
-                        //camera.position.z
+                goLeft = false
+                goAbove = false;
+                goBelow = false;
+                goRight = false
+                moveForvard = false
+                moveBack = false
+                moveLeft = false
+                moveRight = false
+                    //camera.position.x
+                    //camera.position.y
+                    //camera.position.z
 
             }
 
@@ -347,7 +352,7 @@
                 //wykonywanie funksji bez końca ok 60 fps jesli się da
 
                 requestAnimationFrame(animateScene);
-				if (goAbove) {
+                if (goAbove) {
                     camera.position.y += 30;
                 }
 
@@ -366,7 +371,7 @@
                     camera.position.z = r * Math.cos(angle);
                     angle -= 0.05;
                 }
-				/*
+                /*
 				if (moveForvard) {
 				}
 				if (moveBack) {
@@ -381,7 +386,7 @@
 
                 renderer.render(scene, camera);
                 camera.lookAt(scene.position);
-				//camera.lookAt(new THREE.Vector3(0, 0, 0));
+                //camera.lookAt(new THREE.Vector3(0, 0, 0));
                 //if (pomm) { camera.position.y = camera.position.y - 40; }
                 //else if (pommm) { camera.position.y = camera.position.y + 40; }
             }
@@ -393,15 +398,17 @@
 
             //zarejestruj eventy klawiatury
 
-            
-            
+
+
         }
     </script>
 </head>
-<body onload = "load();">
-    <div id = "container">
-        
+
+<body onload="load();">
+    <div id="container">
+
     </div>
-    
+
 </body>
+
 </html>
