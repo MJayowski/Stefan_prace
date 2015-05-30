@@ -188,8 +188,8 @@
             var moveLeft = false
             var moveRight = false
 
-            document.addEventListener("mousedown", onMouseDown, false);
-            //document.getElementById("container").addEventListener("mousedown", onMouseDown, false)
+            //document.addEventListener("mousedown", onMouseDown, false);
+            document.getElementById("container").addEventListener("mousedown", onMouseDown, false)
             //document.getElementById("idTegoGdzieMaszRenderowanyThreeJs").addEventListener(..)
 
             //zdefiniuj dwa obiekty:  d
@@ -203,8 +203,8 @@
 
                 //pozycja myszy zostaje przeliczona na wartości 0-1, wymagane przez raycaster
 
-                //mouseVector.x = (event.clientX / window.innerWidth) * 2 - 1;
-                //mouseVector.y = -(event.clientY / window.innerHeight) * 2 + 1;
+                mouseVector.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseVector.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
                 // szukamy punktów wspólnych "promienia" i obiektu 3D
 
