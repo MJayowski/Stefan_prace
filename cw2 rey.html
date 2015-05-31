@@ -213,6 +213,10 @@
                 //intersects - tablica obiektów w które "trafia" nasz "promień" wysyłany z kamery
 
                 var intersects = raycaster.intersectObjects(scene.children);
+				for(var i = 0; i < intersects.length;i++)
+				{
+					console.log(intersects[i])
+				}
 
                 // console.log(intersects.length)
 
